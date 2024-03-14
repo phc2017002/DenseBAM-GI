@@ -2,7 +2,7 @@ import os
 import subprocess
 
 # Directory containing the images
-directory = '/ssd_scratch/cvit/ani31101993/HMER/test_HMER/'
+directory = ./test_HMER/'
 
 # List all files in the directory
 files = os.listdir(directory)
@@ -11,7 +11,7 @@ files = os.listdir(directory)
 files.sort()
 
 # Path to your Python file
-python_file = '/ssd_scratch/cvit/ani31101993/HMER/Densenet_testway_BAM_GI.py'
+python_file = './Densenet_testway_BAM_GI.py'
 
 # Loop through each file and call your Python file with the file as an argument
 for file_name in files:
