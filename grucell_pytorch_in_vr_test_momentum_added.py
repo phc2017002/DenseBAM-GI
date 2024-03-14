@@ -6,7 +6,6 @@ from locked_dropout_test import LockedDropout
 import math
 import torch.nn.functional as F
 
-F_l= 20
 
 class GRUCell(nn.Module):
 
@@ -34,7 +33,7 @@ class GRUCell(nn.Module):
         for w in self.parameters():
             w.data.uniform_(-std, std)
     
-    def forward(self, x, hidden, v, k):
+    def forward(self, x, hidden, v):
         
         x = x.view(-1, x.size(1))
 
@@ -52,10 +51,7 @@ class GRUCell(nn.Module):
         #print("gate_x.size()",gate_x.size())
         #print("v.size()",v.size())
         
-        #vy = self.mu*v + self.epsilon*gate_x
-        
-        vy = ((k % F_l)/(k % F_l + 3)) * v + self.epsilon * gate_x
-
+        vy = self.mu*v + self.epsilon*gate_x
         gate_h = self.h2h(hidden) + vy
         
         #gate_h = self.h2h(hidden)
