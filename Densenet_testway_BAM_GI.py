@@ -7,7 +7,7 @@ import numpy
 import torch.utils.data as data
 #from data_iterator import dataIterator
 from Attention_RNN_test_momentum_original_1 import AttnDecoderRNN
-from Densenet_torchvision import densenet121
+#from Densenet_torchvision import densenet121
 from PIL import Image
 from numpy import *
 import numpy as np
