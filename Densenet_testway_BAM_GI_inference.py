@@ -29,7 +29,7 @@ features={}
 
 channels=1
 
-
+all_equation = []
 
 
 def dataIterator(feature_file,batch_size,batch_Imagesize,maxlen,maxImagesize):
@@ -167,7 +167,7 @@ if __name__ == "__main__":
     # Call the dataIterator function with the img_path
     #dataIterator(img_path)
 
-    error = open('./model_attention_test_DenseBAM_GI_test_2_error.txt',"w+")
+    error = open('./test_output.txt',"w+")
 
     worddicts = load_dict(dictionaries[0])
     worddicts_r = [None] * len(worddicts)
@@ -454,21 +454,24 @@ if __name__ == "__main__":
             decoder_input_t = decoder_input_t.view(batch_size_t)
             
             prediction[:,i] = decoder_input_t
-    
-        for i in range(batch_size_t):
-            for j in range(maxlen):
-                if int(prediction[i][j]) ==0:
-                    break
-                else:
-                    prediction_sub.append(int(prediction[i][j]))
-                    prediction_real.append(worddicts_r[int(prediction[i][j])])
+        with open("predictions.txt", "a") as file:
+            for i in range(batch_size_t):
+                for j in range(maxlen):
+                    if int(prediction[i][j]) ==0:
+                        break
+                    else:
+                        prediction_sub.append(int(prediction[i][j]))
+                        prediction_real.append(worddicts_r[int(prediction[i][j])])
     
             
-            #print('testing--------', ' '.join(prediction_real))
-            error.write(' '.join(prediction_real))
+                print('testing--------', ' '.join(prediction_real))
+                file.write(' '.join(prediction_real) + "\n")
+                #all_equation.append(' '.join(prediction_real))
+            
     
             label_sub = []
             prediction_sub = []
             label_real = []
             prediction_real = []
+        
     
