@@ -41,7 +41,7 @@ class AttnDecoderRNN(nn.Module):
             elif isinstance(m, nn.Linear):
                 nn.init.xavier_uniform_(m.weight)
 
-    def forward(self,input_a, hidden, v,           encoder_outputs,bb,attention_sum,decoder_attention,dense_input,batch_size,h_mask,w_mask,gpu,epoch):
+    def forward(self,input_a, hidden, v, encoder_outputs,bb,attention_sum,decoder_attention,dense_input,batch_size,h_mask,w_mask,gpu,epoch):
 
         # batch_gpu must be an int object
         batch_gpu = int(batch_size/len(gpu))
