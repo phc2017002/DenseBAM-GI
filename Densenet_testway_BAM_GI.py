@@ -324,8 +324,8 @@ if __name__ == "__main__":
 
     #print('--------------------herererer')
 
-    encoder.load_state_dict(torch.load('./model_test_densenet_1024_layers_bam_with_GRU_2014_0.00_0.05_batch_size_6_trail_2/encoder_lr0.00000_GN_te1_d05_SGD_bs6_mask_conv_bn_b_xavier.pkl'))
-    attn_decoder1.load_state_dict(torch.load('./model_test_densenet_1024_layers_bam_with_naive_GRU_2014_0.00_0.05_batch_size_6_trail_2/attn_decoder_lr0.00000_GN_te1_d05_SGD_bs6_mask_conv_bn_b_xavier.pkl'))
+    encoder.load_state_dict(torch.load('./Pretrained_model/encoder_lr0.00000_GN_te1_d05_SGD_bs6_mask_conv_bn_b_xavier.pkl'))
+    attn_decoder1.load_state_dict(torch.load('./Pretrained_model/attn_decoder_lr0.00000_GN_te1_d05_SGD_bs6_mask_conv_bn_b_xavier.pkl'))
 
     total_dist = 0
     total_label = 0
