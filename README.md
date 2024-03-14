@@ -10,6 +10,7 @@ For traning one should use the file test_momentum_training_and_testing_accuracy.
    python > 3.6
    pytorch > 1.7
    opencv 4.8.1
+   scikit-learn 1.3.2
 ```
 
 
