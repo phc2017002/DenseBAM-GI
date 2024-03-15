@@ -2,7 +2,7 @@ import os
 import subprocess
 
 # Directory containing the images
-directory = ./test_HMER/'
+directory = './test_HMER/'
 
 # List all files in the directory
 files = os.listdir(directory)
