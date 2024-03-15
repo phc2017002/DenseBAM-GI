@@ -32,6 +32,8 @@ channels=1
 all_equation = []
 
 
+
+
 def dataIterator(feature_file,batch_size,batch_Imagesize,maxlen,maxImagesize):
 
     imageSize={}
@@ -63,8 +65,10 @@ def dataIterator(feature_file,batch_size,batch_Imagesize,maxlen,maxImagesize):
     for channel in range(channels):
         #image_file = image_path + key
         im = cv2.imread(feature_file)
-        im = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
-        mat[channel,:,:] = im
+        grayImage = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
+        (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, 150, 255, cv2.THRESH_BINARY)
+        inverted_image = 255 - blackAndWhiteImage
+        mat[channel,:,:] = inverted_image
     sentNum = sentNum + 1
     features[key] = mat
 
@@ -163,6 +167,8 @@ if __name__ == "__main__":
     
     # Get the img_path from command-line arguments
     img_path = sys.argv[1]
+
+    key = img_path.split('/')[-1].split('.')[0] 
 
     # Call the dataIterator function with the img_path
     #dataIterator(img_path)
@@ -464,8 +470,8 @@ if __name__ == "__main__":
                         prediction_real.append(worddicts_r[int(prediction[i][j])])
     
             
-                print('testing--------', ' '.join(prediction_real))
-                file.write(' '.join(prediction_real) + "\n")
+                print('testing--------', str(key) + str(' ') + ' '.join(prediction_real))
+                file.write(str(key) + str(' ') + ' '.join(prediction_real) + "\n")
                 #all_equation.append(' '.join(prediction_real))
             
     
